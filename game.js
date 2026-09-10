@@ -138,7 +138,6 @@ function generateClues() {
         });
 
         clueBox.addEventListener('click', () => {
-            clueBox.classList.toggle('clue-done');
             for (let c = 0; c < 15; c++) {
                 if (playerGrid[r][c] === 0) {
                     playerGrid[r][c] = 2; 
@@ -146,6 +145,7 @@ function generateClues() {
                     if (cellDom) cellDom.classList.add('marked-x');
                 }
             }
+            checkClueStatus();
             checkVictoryState();
         });
 
@@ -171,7 +171,6 @@ function generateClues() {
         });
 
         clueBox.addEventListener('click', () => {
-            clueBox.classList.toggle('clue-done');
             for (let r = 0; r < 15; r++) {
                 if (playerGrid[r][c] === 0) {
                     playerGrid[r][c] = 2; 
@@ -179,13 +178,13 @@ function generateClues() {
                     if (cellDom) cellDom.classList.add('marked-x');
                 }
             }
+            checkClueStatus();
             checkVictoryState();
         });
 
         colHeadersContainer.appendChild(clueBox);
     }
 }
-
 function getClueSequence(arr) {
     const sequence = [];
     let count = 0;
